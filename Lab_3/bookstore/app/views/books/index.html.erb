@@ -1,0 +1,44 @@
+<h1>Hello, These are the books</h1>
+    <button>
+        <%= link_to "Add new Book", new_book_path %>
+    </button>
+    <br><br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @books.each do |book| %>
+        <tr>
+            <td> <%= image_tag book.image, style: 'max-width: 10rem; max-height: 10rem;' if book.image.attached? %> </td>
+            <td> <%= book.name %> </td>
+            <td> <%= book.description %> </td>
+            <td> <%= book.price %> </td>
+            <td> <%= book.created_at %> </td>
+            <td> <%= book.updated_at %> </td>
+            <td>
+                <button>
+                    <%= link_to "Show", book %>
+                </button>
+                <button>
+                    <%= link_to "Edit", edit_book_path(book) %>
+                </button>
+                <button>
+                    <%= link_to "Delete", book_path(book), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                        } %>
+                </button>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

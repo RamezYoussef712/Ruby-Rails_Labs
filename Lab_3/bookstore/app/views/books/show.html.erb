@@ -1,0 +1,15 @@
+<h1>Book Details</h1>
+<h2> <%= @book.name %> </h2>
+<%= image_tag @book.image, style: 'max-width: 15rem; mac-height: 15rem' if @book.image.attached? %>
+<p>
+    <strong>Description: </strong>
+    <%= @book.description %> 
+</p>
+<p>
+    <strong>Price: </strong> 
+    $<%= @book.price %> 
+</p>
+
+<button>
+    <%= link_to "Back to Homepage", books_path %>
+</button>
